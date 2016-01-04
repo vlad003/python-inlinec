@@ -4,28 +4,30 @@ Well, not really inline. You write it in a string.
 
 Here's an example:
 
-    import inlinec
-    import timeit
+```python
+import inlinec
+import timeit
 
-    def f1(x):
-        y = 5
-        for i in range(x):
-            y = y*i % x
+def f1(x):
+    y = 5
+    for i in range(x):
+        y = y*i % x
 
-        return y
+    return y
 
-    f2 = inlinec.gcc("""int f(int x) {
-                            int y = 5;
-                            for (int i = 0; i < x; i++) {
-                                y = y*i % x;
-                            }
-                            return y;
-                        }""")
+f2 = inlinec.gcc("""int f(int x) {
+                        int y = 5;
+                        for (int i = 0; i < x; i++) {
+                            y = y*i % x;
+                        }
+                        return y;
+                    }""")
 
-    print("Computing in Python")
-    print(timeit.timeit("f1(256)", globals=globals()))
-    print("Computing in C")
-    print(timeit.timeit("f2(256)", globals=globals()))
+print("Computing in Python")
+print(timeit.timeit("f1(256)", globals=globals()))
+print("Computing in C")
+print(timeit.timeit("f2(256)", globals=globals()))
+```
 
 On my machine, I get the following output:
 
