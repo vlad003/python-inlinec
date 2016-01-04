@@ -1,0 +1,6 @@
+.ropeproject/
+__pytcache__/
+*.so
+*.o
+*.pyc
+*.swp
